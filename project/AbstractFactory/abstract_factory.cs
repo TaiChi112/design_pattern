@@ -167,6 +167,8 @@ namespace Task02.AbstractFactoryMethod.buildAquarium
             plant.Setup();
             substrate.Setup();
 
+            Console.ReadLine();
+
         }
     }
 }

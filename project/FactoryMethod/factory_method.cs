@@ -5,30 +5,31 @@ namespace Task01.FactoryMethod
     public interface WorkoutProgram
     {
         void planWorkout();
-        string getGoal();
-        int calculateTime();
+        string getGoal {get;}
+        int calculateTime {get;}
+
     }
 
     // Concrete Products
     public class CardioPlan : WorkoutProgram
     {
         public void planWorkout() {Console.WriteLine("CardioPlan WorkOut...");}
-        public string getGoal() { return "Fat Burning!";}
-        public int calculateTime() {return 60;}
+        public string getGoal {get;} = "Fat Burning!";
+        public int calculateTime {get;} = 60;
     }
 
     public class StrengthPlan : WorkoutProgram
     {
         public void planWorkout() {Console.WriteLine("StrengthPlan WorkOut...");}
-        public string getGoal() { return "build muscle!";}
-        public int calculateTime() {return 60;}
+        public string getGoal{get;} = "build muscle!";
+        public int calculateTime{get;} = 60;
     }
 
     public class YogaPlan : WorkoutProgram
     {
         public void planWorkout() {Console.WriteLine("YogaPlan WorkOut...");}
-        public string getGoal() { return "Stretching!";}
-        public int calculateTime() {return 40;}
+        public string getGoal{get;} = "Stretching!";
+        public int calculateTime{get;} = 40;
     }
 
     // Abstract Creator
@@ -44,8 +45,8 @@ namespace Task01.FactoryMethod
 
             Console.WriteLine("=== New Workout Plan Created ===");
             program.planWorkout();
-            Console.WriteLine($"Goal: {program.getGoal()}");
-            Console.WriteLine($"Total Time: {program.calculateTime()} minutes");
+            Console.WriteLine($"Goal: {program.getGoal}");
+            Console.WriteLine($"Total Time: {program.calculateTime} minutes");
             Console.WriteLine("=======================");
         }
     }
@@ -91,16 +92,6 @@ namespace Task01.FactoryMethod
             //Yoga
             factory = new YogaPlanCreator();
             factory.CreateProgram();
-
-
-            Console.WriteLine("===Main===");
-            ProgramFactory client = new BeginnerPlanCreator();
-            WorkoutProgram program = client.getWorkoutProgram();
-            Console.WriteLine($"Goal: {program.getGoal()}");
-            Console.WriteLine($"Time: {program.calculateTime()} minutes");
-            program.planWorkout();
-
-
             Console.WriteLine();
 
         }

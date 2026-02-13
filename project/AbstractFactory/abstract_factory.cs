@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Task02.AbstractFactoryMethod.buildAquarium 
+namespace Aquarium 
 {
 
     // Product
@@ -113,9 +113,13 @@ namespace Task02.AbstractFactoryMethod.buildAquarium
     public class Client
     {
         private AquariumFactory factory;
-        private Fish fish;
-        private Plant plant;
-        private Substrate substrate;
+        // private Fish fish;
+        // private Plant plant;
+        // private Substrate substrate;
+
+        private Fish fish = null!;
+        private Plant plant = null!;
+        private Substrate substrate = null!;
 
         public Client(AquariumFactory f)
         {
@@ -158,7 +162,7 @@ namespace Task02.AbstractFactoryMethod.buildAquarium
             client.Setup();
             Console.WriteLine("======");
 
-            Console.WriteLine("Call in Main");
+            
             factory = new FreshwaterFactory();
             Fish fish = factory.CreateFish();
             Plant plant = factory.CreatePlant();

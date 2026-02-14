@@ -1,0 +1,25 @@
+name: Contributor Welcome Bot
+on:
+  # ✅ ใช้ pull_request ธรรมดาก่อน เพื่อให้ Test ใน Fork ตัวเองได้ทันที
+  pull_request:
+    types: [opened]
+
+permissions:
+  pull-requests: write # ขออนุญาตเขียนคอมเมนต์
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post Welcome Comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          # ใช้คำสั่ง gh pr comment (เจาะจงกว่า gh issue comment)
+          gh pr comment "$PR_URL" --body "👋 สวัสดีครับคุณ @${{ github.actor }}! 
+          
+          ขอบคุณที่มาร่วม Contribute ในโปรเจกต์นี้นะครับ! 🎉
+          ระบบได้รับ PR เรียบร้อยแล้ว เดี๋ยวเพื่อนผม (เจ้าของ Repo) จะรีบมาตรวจสอบครับ
+          
+          (Automated by GitHub Actions 🤖)"
